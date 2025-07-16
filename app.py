@@ -8,7 +8,7 @@ from langchain.llms import OpenAI
 import streamlit as st
 
 # Step 1: Set OpenAI API key (replace with your own)
-os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")  # your OpenAI key here
+
 
 # Step 2: Load your Word document (.docx)
 loader = UnstructuredWordDocumentLoader("cv_vrish.docx")
