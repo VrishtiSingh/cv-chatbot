@@ -1,0 +1,13 @@
+langchain==0.0.230
+
+langchain-community==0.0.36
+
+openai
+
+faiss-cpu
+
+tiktoken
+
+python-docx
+
+streamlit
