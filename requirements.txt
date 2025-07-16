@@ -2,7 +2,7 @@ langchain==0.0.230
 
 langchain-community==0.0.36
 
-openai
+openai==0.27.6
 
 faiss-cpu
 
