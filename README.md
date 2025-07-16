@@ -1,4 +1,4 @@
-# CV Interview Chatbot
+# CV Chatbot
 
 This is an interactive chatbot built using LangChain, OpenAI embeddings, and Streamlit.  
 It allows users to ask questions about my CV and receive conversational, context-aware answers.  
