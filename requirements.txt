@@ -8,6 +8,6 @@ faiss-cpu
 
 tiktoken
 
-python-docx
+docx2txt
 
 streamlit
