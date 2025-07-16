@@ -1,16 +1,14 @@
-from langchain.document_loaders import UnstructuredWordDocumentLoader
+import os
+import streamlit as st
+from langchain.document_loaders import Docx2txtLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.chains import ConversationalRetrievalChain
 from langchain.llms import OpenAI
-import streamlit as st
-
-# Load OpenAI API key from Streamlit secrets
-openai_api_key = st.secrets["OPENAI_API_KEY"]
 
 # Load Word document (.docx)
-loader = UnstructuredWordDocumentLoader("cv_vrish.docx")
+loader = Docx2txtLoader("cv_vrish.docx")
 documents = loader.load()
 
 # Split the text into chunks
@@ -18,14 +16,14 @@ text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=10
 texts = text_splitter.split_documents(documents)
 
 # Create embeddings and vectorstore
-embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
+embeddings = OpenAIEmbeddings()
 vectorstore = FAISS.from_documents(texts, embeddings)
 
-# Setup conversational retrieval chain
-llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0, openai_api_key=openai_api_key)
+# Setup conversational retrieval chain with GPT-3.5 Turbo
+llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0)
 qa = ConversationalRetrievalChain.from_llm(llm, vectorstore.as_retriever())
 
-# Streamlit UI setup
+# Streamlit UI
 st.title("CV Interview Chatbot")
 
 if "chat_history" not in st.session_state:
