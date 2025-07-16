@@ -7,10 +7,10 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.llms import OpenAI
 import streamlit as st
 
-# Step 1: Set OpenAI API key (replace with your own)
 
 
-# Step 2: Load your Word document (.docx)
+
+# Step 2: Load Word document (.docx)
 loader = UnstructuredWordDocumentLoader("cv_vrish.docx")
 documents = loader.load()
 
